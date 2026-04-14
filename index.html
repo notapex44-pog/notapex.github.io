@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
         <h2>My Portfolio</h2>
         <ul>
@@ -22,28 +21,30 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button id="theme-btn" class="btn small-btn" onclick="toggleTheme()">Light Mode</button>
     </nav>
 
-    <section id="home">
+    <section id="home" class="reveal">
         <div class="hero-text">
             <img src="profile.jpg" alt="Profile picture" class="profile-img">
             <h1>Hello, I'm Kahla Ahmed Tedjani</h1>
-            <p class="subtitle">Computer Science Student | Future Web Developer</p>
+            <p class="subtitle"><span id="typing-text"></span></p>
             <p class="intro-text">
-                Passionate about technology, web design, and building clean modern websites while improving my coding skills every day.
+                Passionate about technology, web design, and building clean, modern websites while improving my coding skills every day.
             </p>
 
             <div class="hero-buttons">
-                <a href="#projects" class="btn">See My Projects</a>
+                <a href="#projects" class="btn">View Projects</a>
                 <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                <button class="btn secondary-btn" onclick="toggleAbout()">About Toggle</button>
             </div>
         </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="reveal">
         <div class="content-box">
             <h2>About Me</h2>
-            <p>
+            <p id="about-text">
                 I am a Computer Science student interested in programming, web development, and technology.
                 My hobbies include learning new coding skills, exploring website design, and working on small projects.
                 My goal is to become a skilled software developer and create useful modern websites and applications.
@@ -51,47 +52,57 @@
         </div>
     </section>
 
-    <section id="education">
+    <section id="education" class="reveal">
         <div class="content-box">
             <h2>Education</h2>
             <ul>
-                <li>Computer Science Student - [Lobachevsky State University of Nizhni Novgorod]</li>
+                <li>Computer Science Student - Lobachevsky State University of Nizhni Novgorod</li>
                 <li>Relevant coursework: Programming, Web Development, Databases</li>
             </ul>
         </div>
     </section>
 
-    <section id="skills">
+    <section id="skills" class="reveal">
         <h2>My Skills</h2>
         <ul>
             <li>💻 HTML</li>
             <li>🎨 CSS</li>
+            <li>⚡ JavaScript</li>
             <li>🧠 Problem Solving</li>
             <li>🤝 Teamwork</li>
             <li>🌐 Web Design</li>
         </ul>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="reveal">
         <h2>My Projects</h2>
 
-        <div class="project-card">
-            <h3>Portfolio Website</h3>
-            <p>A personal portfolio website to present my skills, projects, and contact information.</p>
+        <div class="filter-buttons">
+            <button class="filter-btn active-filter" onclick="filterProjects('all')">All</button>
+            <button class="filter-btn" onclick="filterProjects('web')">Web</button>
+            <button class="filter-btn" onclick="filterProjects('university')">University</button>
+            <button class="filter-btn" onclick="filterProjects('personal')">Personal</button>
         </div>
 
-        <div class="project-card">
-            <h3>School Project</h3>
-            <p>Design and development of a web-based university document request portal.</p>
-        </div>
+        <div class="projects-grid">
+            <div class="project-card" data-category="web personal">
+                <h3>Portfolio Website</h3>
+                <p>A personal portfolio website to present my skills, projects, and contact information in a clean modern design.</p>
+            </div>
 
-        <div class="project-card">
-            <h3>Coming Soon</h3>
-            <p>More projects will be added here later.</p>
+            <div class="project-card" data-category="web university">
+                <h3>University Document Portal</h3>
+                <p>Design and development concept for a web-based university document request portal for students.</p>
+            </div>
+
+            <div class="project-card" data-category="personal">
+                <h3>Student Portfolio Concept</h3>
+                <p>A personal design concept focused on building a professional online identity and showcasing technical growth.</p>
+            </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="reveal">
         <div class="content-box">
             <h2>Contact</h2>
             <p>You can reach me by email or phone.</p>
@@ -103,9 +114,10 @@
     </section>
 
     <footer>
-        <p>© 2026 Kahla Ahmed Tedjani</p>
-        <p>Built with HTML and CSS</p>
+        <p>© <span id="year"></span> Kahla Ahmed Tedjani</p>
+        <p>Built with HTML, CSS and JavaScript</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>

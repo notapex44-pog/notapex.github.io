@@ -7,6 +7,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
     color: white;
+    transition: background 0.3s, color 0.3s;
 }
 
 nav {
@@ -20,6 +21,8 @@ nav {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
     z-index: 1000;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
     nav h2 {
@@ -35,6 +38,7 @@ nav {
         gap: 20px;
         padding: 0;
         margin: 0;
+        flex-wrap: wrap;
     }
 
     nav a {
@@ -95,6 +99,7 @@ section {
     color: #cbd5e1;
     margin-bottom: 20px;
     line-height: 1.6;
+    min-height: 32px;
 }
 
 .intro-text {
@@ -123,12 +128,20 @@ section {
     transition: 0.3s;
     box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
     margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
 }
 
     .btn:hover {
         transform: translateY(-3px) scale(1.03);
         box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
     }
+
+.small-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+}
 
 .secondary-btn {
     background: transparent;
@@ -231,15 +244,40 @@ h2 {
     }
 
 #projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
     padding: 120px 25px;
 }
 
-    #projects h2 {
-        grid-column: 1 / -1;
+.filter-buttons {
+    margin: 20px 0 35px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 18px;
+    border: 1px solid #38bdf8;
+    background: transparent;
+    color: #38bdf8;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+    .filter-btn:hover,
+    .active-filter {
+        background: #38bdf8;
+        color: black;
     }
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
 
 .project-card {
     background: rgba(30, 41, 59, 0.85);
@@ -283,6 +321,60 @@ footer {
         margin: 6px 0;
     }
 
+/* Reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* Light Mode */
+.light-mode {
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5e1);
+    color: #0f172a;
+}
+
+    .light-mode nav {
+        background: rgba(226, 232, 240, 0.95);
+    }
+
+        .light-mode nav a {
+            color: #0f172a;
+        }
+
+        .light-mode nav h2,
+        .light-mode h2,
+        .light-mode .project-card h3 {
+            color: #0284c7;
+        }
+
+    .light-mode .subtitle,
+    .light-mode .intro-text,
+    .light-mode #about p,
+    .light-mode #contact p,
+    .light-mode #education li,
+    .light-mode .project-card p {
+        color: #1e293b;
+    }
+
+    .light-mode .content-box,
+    .light-mode .project-card,
+    .light-mode #skills li {
+        background: rgba(255, 255, 255, 0.85);
+        color: #0f172a;
+        border: 1px solid rgba(2, 132, 199, 0.15);
+    }
+
+    .light-mode footer {
+        background: rgba(226, 232, 240, 0.95);
+        color: #334155;
+    }
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -291,7 +383,6 @@ footer {
     }
 
         nav ul {
-            flex-wrap: wrap;
             justify-content: center;
         }
 
